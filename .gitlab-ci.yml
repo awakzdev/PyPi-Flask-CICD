@@ -9,5 +9,6 @@ docker-build & push:
   before_script:
     - docker login -u $JFROG_USERNAME awakzdev.jfrog.io --password-stdin $JFROG_PASSWORD
   script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE" . 
-    - docker push "$CI_REGISTRY_IMAGE"
+    - docker build -t simple-flask .  
+    - docker tag simple-flask awakzdev.jfrog.io/docker-local/simple-flask:latest
+    - docker push awakzdev.jfrog.io/docker-local/simple-flask:latest
