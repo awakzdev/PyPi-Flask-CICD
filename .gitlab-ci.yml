@@ -7,7 +7,7 @@ build & deploy:
   services:
     - docker:dind
   before_script:
-    - docker login -u awakz awakzdev.jfrog.io --password-stdin "$JFROG_PASSWORD"
+    - docker login -u "$JFROG_USERNAME" awakzdev.jfrog.io --password-stdin "$JFROG_PASSWORD"
   script:
     - docker build -t simple-flask .  
     - docker tag simple-flask awakzdev.jfrog.io/docker-local/simple-flask:latest
