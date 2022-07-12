@@ -12,4 +12,4 @@ build & deploy:
 
   script:
     - docker build -t simple-flask .  
-    - docker push simple-flask:latest
+    - docker push awakz/simple-flask:latest
