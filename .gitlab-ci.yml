@@ -4,7 +4,9 @@ stages:
 build & deploy:
   image: docker:latest
   stage: build
-
+  services:
+    - docker:dind
+    
   before_script:
     - echo "$FROG_PASSWORD" | docker login --username "$JFROG_USERNAME" awakzdev.jfrog.io --password-stdin
   script:
