@@ -1,13 +1,13 @@
 stages: 
  - build
 
-build & deploy1:
+build & deploy:
   image: docker:latest
   stage: build
   services:
     - docker:dind
   before_script:
-    - echo $FROG_PASSWORD | docker login -u "$JFROG_USERNAME" awakzdev.jfrog.io --password stdin
+    - echo "$FROG_PASSWORD" | docker login -u "$JFROG_USERNAME" awakzdev.jfrog.io --password stdin
   script:
     - docker build -t simple-flask .  
     - docker tag simple-flask awakzdev.jfrog.io/docker-local/simple-flask:latest
