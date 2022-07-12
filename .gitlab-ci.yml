@@ -1,7 +1,7 @@
 stages: 
  - build
 
-build & deploy:
+build & deploy1:
   image: docker:latest
   stage: build
   services:
