@@ -12,5 +12,5 @@ build & deploy:
 
   script:
     - docker build -t simple-flask .  
-    - docker tag simple-flask awakz/simple-flask:latest
-    - docker push awakz/simple-flask:latest
+    - docker tag simple-flask awakzdev.jfrog.io/docker-local/simple-flask:latest
+    - docker push awakzdev.jfrog.io/docker-local/simple-flask:latest
