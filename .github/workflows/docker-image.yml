@@ -17,8 +17,8 @@ jobs:
           username: ${{ secrets.JFROG_USERNAME }}
           password: ${{ secrets.JFROG_PASSWORD }}
           
-      - name: jfrog/setup-jfrog-cli@v2
-        uses: docker/build-push-action@v3
+      - name: build & deploy
+        uses: jfrog/setup-jfrog-cli@v2
         with:
           context: .
           run: docker tag simple-flask awakzdev.jfrog.io/docker-local/simple-flask:latest
