@@ -36,4 +36,4 @@ docker-build:
 
   # Only build off of master branch:
   only:
-    - master
+    - main
