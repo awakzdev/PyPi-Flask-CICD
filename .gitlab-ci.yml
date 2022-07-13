@@ -22,6 +22,9 @@ docker-build:
     DOCKER_DRIVER: overlay2
     DOCKER_TLS_CERTDIR: ""
 
+  before_script:
+    - echo $JFROG_API | docker login -u $JFROG_USERNAME awakzdev.jfrog.io --password-stdin
+    
   script:
     # Download bash:
     - apk add --no-cache bash python3
