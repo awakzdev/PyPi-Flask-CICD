@@ -1,7 +1,7 @@
-Will calculate all prime numbers that come before a number (2, 100) and return as a JSON within flask
+#### Will calculate all prime numbers that come before a number (2, 100) and return as a JSON within flask
 
-# To pull the image 
-docker pull awakzdev.jfrog.io/docker-local/simple-flask:latest
+## To pull the image 
+`docker pull awakzdev.jfrog.io/docker-local/simple-flask:latest`
 
-# To run
-docker run -p 8777:8777 -it awakzdev.jfrog.io/docker-local/simple-flask
+## To run
+`docker run -p 8777:8777 -it awakzdev.jfrog.io/docker-local/simple-flask`
