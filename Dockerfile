@@ -5,4 +5,4 @@ RUN chmod u+x entrypoint.sh && ./entrypoint.sh
 COPY requirements.txt requirements.txt
 RUN pip install --upgrade pip
 EXPOSE 5000
-CMD ["python", "./simpleflask.py]
+CMD ["python", "./simpleflask.py"]
