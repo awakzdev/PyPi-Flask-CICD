@@ -5,13 +5,12 @@ build & deploy:
   image: docker:latest
   stage: build
   services:
-    - docker:dind
+    - docker:19-dind
     
   before_script:
     - echo $JFROG_API | docker login -u $JFROG_USERNAME awakzdev.jfrog.io --password-stdin
 
   script:
-    - export DOCKER_HOST=tcp://localhost:2375
     - docker build -t simple-flask .  
     - docker tag simple-flask awakzdev.jfrog.io/docker-local/simple-flask:latest
     - docker push awakzdev.jfrog.io/docker-local/simple-flask:latest
