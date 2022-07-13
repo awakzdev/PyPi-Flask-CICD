@@ -1,2 +1,2 @@
 Flask
-ganesha==0.0.4
+
