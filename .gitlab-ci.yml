@@ -30,9 +30,9 @@ docker-build:
     #
     # CHANGEME: You can use some other Docker registry though by changing the
     # login and image name.
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
-    - docker build -t "$CI_REGISTRY_IMAGE" .
-    - docker push "$CI_REGISTRY_IMAGE"
+    - docker build -t simple-flask .  
+    - docker tag simple-flask awakzdev.jfrog.io/docker-local/simple-flask:latest
+    - docker push awakzdev.jfrog.io/docker-local/simple-flask:latest
 
   # Only build off of master branch:
   only:
