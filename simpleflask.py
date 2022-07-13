@@ -1,16 +1,18 @@
-from flask import Flask, jsonify
+from flask import Flask
+from flask_restful import Resource, Api
 from ganesha_experimental.main import *
 
 app = Flask(__name__)
+api = Api(app)
 
 
-@app.route('/')
-def index():
-    n = random.randint(2, 100)
-    previous_primes_list = printPrime(n)
+class PrimedFlask(Resource):
+    def get(self):
+        n = random.randint(2, 100)
+        return {"Prime": printPrime(n)}
 
-    return jsonify({'Prime': previous_primes_list})
 
+api.add_resource(PrimedFlask, '/')
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port='5000')
+    app.run(host='0.0.0.0')
