@@ -1,2 +1,2 @@
 Flask
-packaged-python==0.0.4
+ganesha==0.0.4
