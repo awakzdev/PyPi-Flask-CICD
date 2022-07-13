@@ -1,16 +1,39 @@
-stages: 
- - build
-
-build & deploy:
-  image: docker:stable
+# Build and push the Docker image off of merges to master; based off
+# of Gitlab CI support in https://pythonspeed.com/products/pythoncontainer/
+docker-build:
   stage: build
+
+  image:
+    # An alpine-based image with the `docker` CLI installed.
+    name: docker:stable
+
+  # This will run a Docker daemon in a container (Docker-In-Docker), which will
+  # be available at thedockerhost:2375. If you make e.g. port 5000 public in Docker
+  # (`docker run -p 5000:5000 yourimage`) it will be exposed at thedockerhost:5000.
   services:
-    - docker:dind
-    
-  before_script:
-    - echo $JFROG_API | docker login -u $JFROG_USERNAME awakzdev.jfrog.io --password-stdin
+   - name: docker:dind
+     alias: thedockerhost
+
+  variables:
+    # Tell docker CLI how to talk to Docker daemon; see
+    # https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#use-docker-in-docker-executor
+    DOCKER_HOST: tcp://thedockerhost:2375/
+    # Use the overlayfs driver for improved performance:
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: ""
 
   script:
-    - docker build -t simple-flask .  
-    - docker tag simple-flask awakzdev.jfrog.io/docker-local/simple-flask:latest
-    - docker push awakzdev.jfrog.io/docker-local/simple-flask:latest
+    # Download bash:
+    - apk add --no-cache bash python3
+    # GitLab has a built-in Docker image registry, whose parameters are set automatically.
+    # See https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#using-the-gitlab-contai
+    #
+    # CHANGEME: You can use some other Docker registry though by changing the
+    # login and image name.
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+    - docker build -t "$CI_REGISTRY_IMAGE" .
+    - docker push "$CI_REGISTRY_IMAGE"
+
+  # Only build off of master branch:
+  only:
+    - master
