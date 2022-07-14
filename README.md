@@ -1,5 +1,5 @@
 # Explanation
-#### This will pull from an Artifact PyPi repository made here https://github.com/awakzdev/CICD-PyPi-Artifact
+#### This will pull from a private Artifact PyPi repository made here https://github.com/awakzdev/CICD-PyPi-Artifact
 #### Will calculate all prime numbers that come before a number (2, 100) and return as a JSON within flask
 
 ##### To pull the image 
