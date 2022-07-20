@@ -15,6 +15,11 @@ jobs:
           JF_ARTIFACTORY_SERVER: ${{ secrets.JFROG_CLI }}
       - name: Checkout
         uses: actions/checkout@v3
+      
+      - name: setup venv
+        run: |
+          python3 -m venv env
+          source ./env/bin/activate
 
       - name: install dependencies
         run: |
