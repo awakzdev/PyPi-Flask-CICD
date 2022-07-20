@@ -9,10 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup JFrog CLI
-        uses: jfrog/setup-jfrog-cli@v2
-        env:
-          JF_ARTIFACTORY_SERVER: ${{ secrets.JFROG_CLI }}
       - name: Checkout
         uses: actions/checkout@v3
 
