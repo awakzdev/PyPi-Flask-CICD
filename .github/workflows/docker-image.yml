@@ -18,7 +18,7 @@ jobs:
 
       - name: install dependencies
         run: |
-          echo ${{ secrets.PIP }} > etc/pip.conf
+          cp ${{ secrets.PIP }} > etc/pip.conf
           pip install ganesha-experimental==2.0.1
 
       - name: Build
