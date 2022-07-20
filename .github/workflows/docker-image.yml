@@ -18,7 +18,7 @@ jobs:
           
       - name: install dependencies
         run: |
-          pip install ganesha_experimental==2.0.1 --index-url ${{ secrets.JFROG_URL }}
+          pip install ganesha_experimental==5.0.0 --index-url ${{ secrets.JFROG_URL }}
       
       - name: login
         run: |
