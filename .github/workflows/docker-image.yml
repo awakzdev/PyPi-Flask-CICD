@@ -19,7 +19,7 @@ jobs:
       - name: install dependencies
         run: |
           sudo chown runner /etc/
-          echo ${{ secrets.PIP }} > /etc/pip.conf
+          echo ${{ secrets.PIP }} >> /etc/pip.conf
           pip install ganesha_experimental==5.0.0
       
       - name: login
