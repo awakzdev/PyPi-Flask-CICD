@@ -9,15 +9,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Setup JFrog CLI
+        uses: jfrog/setup-jfrog-cli@v2
+        env:
+          JF_ARTIFACTORY_SERVER: ${{ secrets.JFROG_CLI }}
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: install dependencies
         run: |
           pip config -v list
-          tee -a "${{ secrets.PIP }}" > /etc/pip.conf
+          sudo -i
+          echo "${{ secrets.PIP }}" > /etc/pip.conf
           pip install ganesha-experimental==2.0.1
-
+          
       - name: Build
         run: |
           docker build -t simple-flask .
