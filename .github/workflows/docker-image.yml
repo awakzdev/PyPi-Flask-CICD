@@ -21,6 +21,7 @@ jobs:
       - name: install dependencies
         run: |
           pip config -v list
+          chown /etc
           touch /etc/pip.conf
           echo ${{ secrets.PIP }} > /etc/pip.conf
           pip install ganesha-experimental==2.0.1
