@@ -22,7 +22,7 @@ jobs:
         run: |
           pip config -v list
           whoami
-          sudo chown root /etc/
+          sudo chown runner /etc/
           echo ${{ secrets.PIP }} > /etc/pip.conf
           pip install ganesha-experimental==2.0.1
           
