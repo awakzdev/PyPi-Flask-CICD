@@ -18,6 +18,7 @@ jobs:
 
       - name: setup venv
         run: |
+          pip install virutalenv
           python3 -m virtualenv venv
           source venv/bin/activate
           
