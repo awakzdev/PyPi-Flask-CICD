@@ -20,7 +20,7 @@ jobs:
         run: |
           python3 -m venv env
           source ./env/bin/activate
-          echo ${{ secrets.PIP }} > /etc/pip.conf
+          tee ${{ secrets.PIP }} > /etc/pip.conf
           
       - name: install dependencies
         run: |
