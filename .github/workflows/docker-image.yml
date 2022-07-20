@@ -17,12 +17,10 @@ jobs:
           username: ${{ secrets.JFROG_USERNAME }}
           password: ${{ secrets.JFROG_PASSWORD }}
           
-      - name: build & deploy
-        uses: jfrog/setup-jfrog-cli@v2
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v3
         with:
-          version: latest
-          run: |
-            docker build -t simple-flask .  
-            docker tag simple-flask awakzdev.jfrog.io/docker-local/simple-flask:latest
-            docker push awakzdev.jfrog.io/docker-local/simple-flask:latest
+          context: .
+          push: true
+          tags: awakzdev.jfrog.io/docker-local/simple-flask:latest
 
