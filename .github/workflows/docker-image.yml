@@ -22,5 +22,5 @@ jobs:
         with:
           context: .
           run: |
-            - docker tag simple-flask awakzdev.jfrog.io/docker-local/simple-flask:latest
-            - docker push awakzdev.jfrog.io/docker-local/simple-flask:latest
+            docker tag simple-flask awakzdev.jfrog.io/docker-local/simple-flask:latest
+            docker push awakzdev.jfrog.io/docker-local/simple-flask:latest
