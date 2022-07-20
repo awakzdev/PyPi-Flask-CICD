@@ -20,7 +20,7 @@ jobs:
       - name: build & deploy
         uses: jfrog/setup-jfrog-cli@v2
         with:
-          context: .
+          version: latest
           run: |
             docker build -t simple-flask .  
             docker tag simple-flask awakzdev.jfrog.io/docker-local/simple-flask:latest
