@@ -21,6 +21,6 @@ jobs:
         uses: jfrog/setup-jfrog-cli@v2
         with:
           context: .
-          run: docker build simple-flask .
-          push: true
-          tags: docker push awakzdev.jfrog.io/docker-local/simple-flask:latest
+          run: |
+            - docker tag simple-flask awakzdev.jfrog.io/docker-local/simple-flask:latest
+            - docker push awakzdev.jfrog.io/docker-local/simple-flask:latest
