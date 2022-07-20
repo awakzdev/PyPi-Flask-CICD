@@ -11,15 +11,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Setup Jfrog CLI
-        uses: jfrog/setup-jfrog-cli@v1
+      - name: Login to Docker Hub
+        uses: jfrog/setup-jfrog-cli@v2
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-      - name: checkout
-      - uses: actions/checkout@v3
-      - name: Build
-        run: |
-          docker tag simple-flask awakzdev.jfrog.io/docker-local/simple-flask:latest
-          docker push awakzdev.jfrog.io/docker-local/simple-flask:latest
-
+          username: ${{ secrets.JFROG_USERNAME }}
+          password: ${{ secrets.JFROG_PASSWORD }}
+          
+      - name: build & deploy
+        uses: jfrog/setup-jfrog-cli@v2
+        with:
+          context: .
+          run: docker tag simple-flask awakzdev.jfrog.io/docker-local/simple-flask:latest
+          push: true
+          tags: docker push awakzdev.jfrog.io/docker-local/simple-flask:latest
