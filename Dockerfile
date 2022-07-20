@@ -1,4 +1,4 @@
-FROM python:3.8.0
+FROM python
 WORKDIR ./app
 COPY . /app
 RUN pip install --upgrade pip
