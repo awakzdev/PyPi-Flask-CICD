@@ -16,13 +16,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-          
-          
       - name: install dependencies
         run: |
           pip install ganesha-experimental==2.0.1 --index-url ${{ secrets.JFROG_URL }}
+      
+      - name: login
+        run: |
+          echo ${{ secrets.JFROG_PASSWORD }} | docker login -u ${{ secrets.JFROG_USERNAME}} awakzdev.jfrog.io --password-stdin
           
-      - name: Build
+      - name: Build & push
         run: |
           docker build -t simple-flask .
           docker tag simple-flask awakzdev.jfrog.io/docker-local/simple-flask:latest
