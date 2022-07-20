@@ -9,7 +9,8 @@ api = Api(app)
 
 class PrimedFlask(Resource):
     def get(self):
-        Prime()
+        n = random.randint(2, 100)
+        Prime = str(printPrime(n))[1:-1]
         return jsonify({'Prime': Prime})
 
 
