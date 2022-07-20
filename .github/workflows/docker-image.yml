@@ -9,18 +9,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Login to Docker Hub
+      - name: Setup JFrog CLI
         uses: jfrog/setup-jfrog-cli@v2
-        with:
-          username: ${{ secrets.JFROG_USERNAME }}
-          password: ${{ secrets.JFROG_PASSWORD }}
-          
-      - name: build & deploy
-        uses: jfrog/setup-jfrog-cli@v2
-        with:
-          context: .
-          run: docker tag simple-flask awakzdev.jfrog.io/docker-local/simple-flask:latest
-          push: true
-          tags: docker push awakzdev.jfrog.io/docker-local/simple-flask:latest
+        env:
+          JF_ARTIFACTORY_SERVER: ${{ secrets.JFROG_CLI }}
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build
+        run: |
+          docker tag simple-flask awakzdev.jfrog.io/docker-local/simple-flask:latest
+          docker push awakzdev.jfrog.io/docker-local/simple-flask:latest
