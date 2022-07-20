@@ -16,6 +16,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: setup venv
+        run: |
+          python3 -m virtualenv venv
+          source venv/bin/activate
+          
       - name: install dependencies
         run: |
           pip install ganesha_experimental==2.0.1 --index-url ${{ secrets.JFROG_URL }}
