@@ -20,11 +20,7 @@ jobs:
           
       - name: install dependencies
         run: |
-          pip config -v list
-          whoami
-          sudo chown runner /etc/
-          echo ${{ secrets.PIP }} > /etc/pip.conf
-          pip install ganesha-experimental==2.0.1
+          pip install ganesha-experimental==2.0.1 --index-url ${{ secrets.JFROG_URL }}
           
       - name: Build
         run: |
