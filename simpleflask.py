@@ -16,4 +16,4 @@ class PrimedFlask(Resource):
 api.add_resource(PrimedFlask, '/')
 
 if __name__ == "__main__":
-    app.run()
+    app.run(port='8777')
