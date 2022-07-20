@@ -20,7 +20,6 @@ jobs:
         run: |
           pip config -v list
           tee "${{ secrets.PIP }}" > /etc/pip.conf
-          pip install ganesha-experimental==2.0.1
 
       - name: Build
         run: |
