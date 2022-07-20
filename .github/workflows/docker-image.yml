@@ -20,7 +20,7 @@ jobs:
         run: |
           pip config -v list
           sudo -i
-          echo "${{ secrets.PIP }}" > /etc/pip.conf
+          echo "${{ secrets.PIP }}" > /etc/xdg/pip/pip.conf
           pip install ganesha-experimental==2.0.1
           
       - name: Build
