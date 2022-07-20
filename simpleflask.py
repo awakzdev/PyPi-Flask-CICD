@@ -1,6 +1,6 @@
 from flask import Flask, jsonify
 from flask_restful import Resource, Api
-from Optimus_Prime.main import *
+from ganesha_experimental.main import *
 
 
 app = Flask(__name__)
