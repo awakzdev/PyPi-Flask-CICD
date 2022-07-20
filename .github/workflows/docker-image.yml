@@ -16,10 +16,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: setup venv
+        run: |
+          python3 -m venv env
+          source ./env/bin/activate
+          cat ${{ secrets.PIP }} > /etc/pip.conf
+          
       - name: install dependencies
         run: |
           pip config -v list
-          sudo cat "${{ secrets.PIP }}" > /etc/pip.conf
           sudo pip install ganesha-experimental==2.0.1
           
       - name: Build
