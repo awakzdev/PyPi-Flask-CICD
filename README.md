@@ -2,6 +2,8 @@
 #### This will pull from a private Jfrog Artifactory PyPi repository made here https://github.com/awakzdev/CICD-PyPi-Artifact
 #### Will calculate all prime numbers that come before a number (2, 100) and return as a JSON within flask
 
+<HR>
+  
 ##### To pull the image 
 `docker pull awakzdev.jfrog.io/docker-local/simple-flask:latest`
 
